@@ -1,0 +1,26 @@
+db:
+  image: postgres
+  environment:
+    - POSTGRES_USER:admin
+    - POSTGRES_PASSWORD:admin
+
+adminer: 
+  image: adminer
+  ports:
+    - "8080:8080"
+  links:
+    - db
+
+readthedocs:
+  image: vassilvk/readthedocs:2015-12-13
+  ports:
+    - "8000:8000"
+  links:
+    - db
+  volumes:
+    - ./user_builds:/app/user_builds
+  environment:
+    - RTD_ALLOW_PRIVATE_REPOS=true
+    - RTD_ACCOUNT_EMAIL_VERIFICATION=none
+    - RTD_HAS_DATABASE=true
+
