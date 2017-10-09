@@ -18,24 +18,28 @@ VSO Git repository URLs are of the form:
 
 This image also removes the infamous account email verification on user sign-up.
 
-### Run the Container
+## Installation
+
 ```
-docker run -d -it -p 8000:8000 -e "RTD_PRODUCTION_DOMAIN=my_domain.com:8000" --name readthedocs vassilvk/readthedocs
+wget https://raw.githubusercontent.com/alessandrams/readthedocs-docker/master/docker-compose.yml
+docker-compose up 
 ```
 
-The above example starts the container with the assumption that it will be accessed at http://my_domain.com:8000.
-Change the port mappings and environment variable `RTD_PRODUCTION_DOMAIN` to reflect your setup.
+## Usage
 
-You need to run the container only once. After that you only need stop and start it:
+
+You can visit the following URL in a browser to get started:
+
 ```
-docker stop readthedocs
-```
-```
-docker start readthedocs
+http://localhost:8080 
 ```
 
 When you run the container for the first time, it creates a container volume where it stores the RTD data.
 Removing the container will delete the container's volume with all the RTD data. Don't remove it unless you want to re-import your RTD projects from scratch.
+
+## Credits
+
+This is a fork of (vassilvk/readthedocs-docker) Dockerfile.
 
 ### Persist the Volume
 If you need to be able to delete the container and still persist your project data, you can do so by mounting a host folder which contains a copy of the initial container volume.
