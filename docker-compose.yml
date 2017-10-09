@@ -12,7 +12,7 @@ adminer:
     - db
 
 readthedocs:
-  image: vassilvk/readthedocs:2015-12-13
+  image: aledemelo/readthedocs-docker:latest
   ports:
     - "8000:8000"
   links:
